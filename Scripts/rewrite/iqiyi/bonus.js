@@ -24,7 +24,7 @@ var bonus = {
     var obj = JSON.parse(response.body);
     if (obj.msg == "成功") {
       if (obj.data.signInfo.code == "A00000") {
-        console.log("success response: \n" + response.body);
+        //console.log("success response: \n" + response.body);
         var status = obj.data.signInfo.msg;
         var AwardName = obj.data.signInfo.data.rewards[0].name;
         var quantity = obj.data.signInfo.data.rewards[0].value;
