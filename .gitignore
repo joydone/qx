@@ -1,5 +1,5 @@
-# gitignore
+# .gitignore
 /[iI]mages
 
-# ignore private configs
-**/private/
+# 
+**[Pp]rivate/
