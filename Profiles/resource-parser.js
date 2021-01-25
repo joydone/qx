@@ -950,10 +950,10 @@ function joy_rename(title, lst) {
 		for(var y of kv){
 			if(/tag=/.test(y)){
 				var tag = y.match(/([\u4e00-\u9fa5]+)/)[0];
-				var ix = arr[tag] || 1;
-				if(ix ==1) arr[tag] = 1;
-				x.replace(y, 'tag=' + tag+ ix);
-				newlst.push( tag + ix + ' ' + x );
+				arr[tag] || (arr[tag] = 0);
+				arr[tag]++;
+				x.replace(y, 'tag=' + tag+ arr[tag]);
+				newlst.push( tag + arr[tag] + ' ' + x );
 			}
 		}
 	}
