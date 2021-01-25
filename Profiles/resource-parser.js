@@ -290,7 +290,7 @@ function ResourceParse() {
 		total = content0
 		//$done({ content: content0 })
 	}
-	$notify("❓❓ ", total)
+	$notify("❓❓ ResourceParse", total)
 
 	return total
 
@@ -446,7 +446,7 @@ function TagCheck_QX(content) {
 		no = duplist.length <= 10 ? emojino[duplist.length] : duplist.length;
 		$notify("⚠️ 引用" + "⟦" + subtag + "⟧" + " 内有" + no + "个重复节点名 ", "✅ 已添加⌘符号作为区分:", " ⨁ " + duplist.join("\n ⨁ "), nan_link)
 	}
-	joy_rename(Nlist);
+	joy_rename("TagCheck_QX",Nlist);
 	return Nlist
 }
 
@@ -939,13 +939,13 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert, Ptls13) {
 			}
 		}
 	}
-	joy_rename(QXlist)
+	joy_rename("Subs2QX", QXlist)
 	return QXlist
 }
 
 // 自定义重命名
-function joy_rename(lst) {
-	$notify(lst.join('\n'))
+function joy_rename(title, lst) {
+	$notify(title, "测试")
 }
 
 //将sip008格式的订阅转换成quanx格式
