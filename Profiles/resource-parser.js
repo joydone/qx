@@ -937,12 +937,17 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert, Ptls13) {
 			}
 		}
 	}
-	joy_rename("Subs2QX"+  list0.length, QXlist)
-	return QXlist
+	//joy_rename(QXlist)
+	return joy_rename(QXlist)
 }
 
 // 自定义重命名
-function joy_rename(title, lst) {
+function joy_rename(lst) {
+	var jfix = mark0 && para1.indexOf("jfix=") != -1 ? para1.split("jfix=")[1].split("&")[0] : 0;
+	var jfix = mark0 && para1.indexOf("jfix=") != -1 ? para1.split("jfix=")[1].split("&")[0] : null;
+
+	if(!jfix) return lst;
+
 	var arr = [];
 	var newlst = [];
 	for(var x of lst){
@@ -952,13 +957,13 @@ function joy_rename(title, lst) {
 				var tag = y.match(/([\u4e00-\u9fa5]+)/)[0];
 				arr[tag] || (arr[tag] = 0);
 				arr[tag]++;
-				x.replace(y, 'tag=' + tag+ arr[tag]);
-				newlst.push( tag + arr[tag] + ' ' + x );
+				x.replace(y, 'tag=' + tag + arr[tag]);
+				newlst.push(x.replace(y, `tag=${jfix}-${tag}-${arr[tag]}`));
 			}
 		}
 	}
-
-	$notify(title, "测试" + lst.length, newlst.join('\n'))
+	$notify('自定义重命名', "" , newlst.join('\n'))
+	return newlst;
 }
 
 //将sip008格式的订阅转换成quanx格式
