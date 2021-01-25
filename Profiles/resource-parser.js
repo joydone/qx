@@ -945,7 +945,7 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert, Ptls13) {
 
 // 自定义重命名
 function joy_rename(title, lst) {
-	$notify(title, "测试")
+	$notify(title, "测试", lst.join('\n'))
 }
 
 //将sip008格式的订阅转换成quanx格式
