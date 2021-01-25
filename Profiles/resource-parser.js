@@ -943,8 +943,22 @@ function Subs2QX(subs, Pudp, Ptfo, Pcert, Ptls13) {
 
 // 自定义重命名
 function joy_rename(title, lst) {
-	$notify(title, "测试" + lst.length, lst.join('\n'))
-	
+	var arr = [];
+	var newlst = [];
+	for(var x of lst){
+		var kv = x.split(/ *, */);
+		for(var y of kv){
+			if(/tag=/.test(y)){
+				var tag = y.match(/([\u4e00-\u9fa5]+)/)[0];
+				var ix = arr[tag] || 1;
+				if(ix ==1) arr[tag] = 1;
+				x.replace(y, 'tag=' + tag+ ix);
+				newlst.push( tag + ix + ' ' + x );
+			}
+		}
+	}
+
+	$notify(title, "测试" + lst.length, newlst.join('\n'))
 }
 
 //将sip008格式的订阅转换成quanx格式
